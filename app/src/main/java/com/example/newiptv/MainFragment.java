@@ -34,8 +34,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-
-import java.util.Collections;
+import java.util.Collection;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -123,7 +122,7 @@ public class MainFragment extends BrowseSupportFragment {
         mBackgroundManager = BackgroundManager.getInstance(getActivity());
         mBackgroundManager.attach(getActivity().getWindow());
 
-        mDefaultBackground = ContextCompat.getDrawable(getActivity(), R.drawable.default_background);
+        mDefaultBackground = ContextCompat.getDrawable(getActivity(), R.drawable.ic_bgsolid);
         mMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
     }
@@ -138,7 +137,7 @@ public class MainFragment extends BrowseSupportFragment {
         setHeadersTransitionOnBackEnabled(true);
 
         // set fastLane (or headers) background color
-        setBrandColor(ContextCompat.getColor(getActivity(), R.color.fastlane_background));
+        setBrandColor(ContextCompat.getColor(getActivity(), R.color.sidebar_background));
         // set search icon color
         setSearchAffordanceColor(ContextCompat.getColor(getActivity(), R.color.search_opaque));
     }

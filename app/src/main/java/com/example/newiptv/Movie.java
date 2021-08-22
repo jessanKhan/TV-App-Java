@@ -63,8 +63,15 @@ public class Movie implements Serializable {
     }
 
     public void setBackgroundImageUrl(String bgImageUrl) {
+    if(bgImageUrl!=null){
         this.bgImageUrl = bgImageUrl;
     }
+
+    else this.bgImageUrl= "https://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review/bg.jpg";
+
+    }
+
+
 
     public String getCardImageUrl() {
         return cardImageUrl;
