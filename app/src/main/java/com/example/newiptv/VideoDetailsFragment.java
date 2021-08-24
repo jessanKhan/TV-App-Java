@@ -75,9 +75,9 @@ public class VideoDetailsFragment extends DetailsSupportFragment {
             mAdapter = new ArrayObjectAdapter(mPresenterSelector);
             setupDetailsOverviewRow();
             setupDetailsOverviewRowPresenter();
-            setupRelatedMovieListRow();
+//            setupRelatedMovieListRow();
             setAdapter(mAdapter);
-            initializeBackground(mSelectedMovie);
+//            initializeBackground(mSelectedMovie);
             setOnItemViewClickedListener(new ItemViewClickedListener());
         } else {
             Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -85,22 +85,22 @@ public class VideoDetailsFragment extends DetailsSupportFragment {
         }
     }
 
-    private void initializeBackground(Movie data) {
-        mDetailsBackground.enableParallax();
-        Glide.with(getActivity())
-                .asBitmap()
-                .centerCrop()
-                .error(R.drawable.default_background)
-                .load(data.getBackgroundImageUrl())
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(@NonNull Bitmap bitmap,
-                                                @Nullable Transition<? super Bitmap> transition) {
-                        mDetailsBackground.setCoverBitmap(bitmap);
-                        mAdapter.notifyArrayItemRangeChanged(0, mAdapter.size());
-                    }
-                });
-    }
+//    private void initializeBackground(Movie data) {
+//        mDetailsBackground.enableParallax();
+//        Glide.with(getActivity())
+//                .asBitmap()
+//                .centerCrop()
+//                .error(R.drawable.default_background)
+//                .load(data.getBackgroundImageUrl())
+//                .into(new SimpleTarget<Bitmap>() {
+//                    @Override
+//                    public void onResourceReady(@NonNull Bitmap bitmap,
+//                                                @Nullable Transition<? super Bitmap> transition) {
+//                        mDetailsBackground.setCoverBitmap(bitmap);
+//                        mAdapter.notifyArrayItemRangeChanged(0, mAdapter.size());
+//                    }
+//                });
+//    }
 
     private void setupDetailsOverviewRow() {
         Log.d(TAG, "doInBackground: " + mSelectedMovie.toString());
@@ -175,20 +175,20 @@ public class VideoDetailsFragment extends DetailsSupportFragment {
         mPresenterSelector.addClassPresenter(DetailsOverviewRow.class, detailsPresenter);
     }
 
-    private void setupRelatedMovieListRow() {
-        String subcategories[] = {getString(R.string.related_movies)};
-        List<Movie> list = MovieList.getList();
-
-        Collections.shuffle(list);
-        ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new CardPresenter());
-        for (int j = 0; j < NUM_COLS; j++) {
-            listRowAdapter.add(list.get(j % 5));
-        }
-
-        HeaderItem header = new HeaderItem(0, subcategories[0]);
-        mAdapter.add(new ListRow(header, listRowAdapter));
-        mPresenterSelector.addClassPresenter(ListRow.class, new ListRowPresenter());
-    }
+//    private void setupRelatedMovieListRow() {
+//        String subcategories[] = {getString(R.string.related_movies)};
+//        List<Movie> list = MovieList.getList();
+//
+//        Collections.shuffle(list);
+//        ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new CardPresenter());
+//        for (int j = 0; j < NUM_COLS; j++) {
+//            listRowAdapter.add(list.get(j % 5));
+//        }
+//
+//        HeaderItem header = new HeaderItem(0, subcategories[0]);
+//        mAdapter.add(new ListRow(header, listRowAdapter));
+//        mPresenterSelector.addClassPresenter(ListRow.class, new ListRowPresenter());
+//    }
 
     private int convertDpToPixel(Context context, int dp) {
         float density = context.getResources().getDisplayMetrics().density;
